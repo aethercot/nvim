@@ -23,16 +23,17 @@ return {
 			local servers = {
 				clangd = {},
 				omnisharp = {},
-				lua_ls = {
+				sumneko_lua = {
 					Lua = {
 						diagnostics = {
 							globals = {"vim", "use", "require"},
 						},
 						workspace = {
-							checkThirdParty = false
+							checkThirdParty = false,
+							library = vim.api.nvim_get_runtime_file("", true),
 						},
 						telemetry = {
-							enable = true
+							enable = false
 						}
 					}
 				}

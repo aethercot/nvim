@@ -7,6 +7,9 @@ o.undofile = true
 o.number = true
 o.relativenumber = true
 
+o.tabstop = 4
+o.shiftwidth = 4
+
 o.cursorline = true
 
 o.mouse = "a"
