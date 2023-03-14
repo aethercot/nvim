@@ -22,6 +22,7 @@ return {
 		config = function()
 			local servers = {
 				clangd = {},
+				omnisharp = {},
 				lua_ls = {
 					Lua = {
 						diagnostics = {
