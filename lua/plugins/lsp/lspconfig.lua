@@ -12,33 +12,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = "williamboman/mason.nvim",
 		config = function()
-			local servers = {
-				clangd = {},
-				omnisharp = { cmd = { "omnisharp" } },
-				lua_ls = {
-					Lua = {
-						diagnostics = {
-							globals = { "vim" },
-						},
-						workspace = {
-							checkThirdParty = false,
-							library = vim.api.nvim_get_runtime_file("", true),
-						},
-						telemetry = {
-							enable = false
-						}
-					}
-				}
-			}
-
-			local mason_lspconfig = require("mason-lspconfig")
-
-			mason_lspconfig.setup({
-				ensure_installed = vim.tbl_keys(servers)
-			})
-
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+			local servers = require("lua.plugins.lsp.servers")
 
 			local on_attach = function(_, bufnr)
 				local nmap = function(keys, func, desc)
@@ -76,6 +50,15 @@ return {
 					vim.lsp.buf.format()
 				end, { desc = "Format current buffer with LSP" })
 			end
+
+			local mason_lspconfig = require("mason-lspconfig")
+
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
+			mason_lspconfig.setup({
+				ensure_installed = vim.tbl_keys(servers)
+			})
 
 			mason_lspconfig.setup_handlers({
 				function(server_name)
