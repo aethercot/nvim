@@ -9,24 +9,16 @@ return {
 		}
 	},
 	{
-		"williamboman/mason.nvim",
-		dependencies = "nvim-lspconfig",
-		config = function()
-			require("mason").setup()
-		end
-	},
-
-	{
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = "williamboman/mason.nvim",
 		config = function()
 			local servers = {
 				clangd = {},
-				omnisharp = {},
-				sumneko_lua = {
+				omnisharp = { cmd = { "omnisharp" } },
+				lua_ls = {
 					Lua = {
 						diagnostics = {
-							globals = {"vim", "use", "require"},
+							globals = { "vim" },
 						},
 						workspace = {
 							checkThirdParty = false,
@@ -38,7 +30,6 @@ return {
 					}
 				}
 			}
-
 
 			local mason_lspconfig = require("mason-lspconfig")
 
