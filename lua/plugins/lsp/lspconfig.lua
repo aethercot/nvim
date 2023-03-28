@@ -12,7 +12,24 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = "williamboman/mason.nvim",
 		config = function()
-			local servers = require("lua.plugins.lsp.servers")
+			local servers = {
+				clangd = {},
+				omnisharp = { cmd = { "omnisharp" } },
+				lua_ls = {
+					Lua = {
+						diagnostics = {
+							globals = { "vim" },
+						},
+						workspace = {
+							checkThirdParty = false,
+							library = vim.api.nvim_get_runtime_file("", true),
+						},
+						telemetry = {
+							enable = false
+						}
+					}
+				}
+			}
 
 			local on_attach = function(_, bufnr)
 				local nmap = function(keys, func, desc)
