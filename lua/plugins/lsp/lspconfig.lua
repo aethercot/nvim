@@ -14,7 +14,9 @@ return {
 		config = function()
 			local servers = {
 				clangd = {},
-				omnisharp = { cmd = { "omnisharp" } },
+				omnisharp = {
+					useGlobalMono = "always"
+				},
 				lua_ls = {
 					Lua = {
 						diagnostics = {
