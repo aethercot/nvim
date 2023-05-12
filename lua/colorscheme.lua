@@ -37,4 +37,6 @@ local aprikot_oled = {
 	},
 }
 
-vim.api.nvim_cmd({ cmd = "colorscheme", args = { "duskfox" } }, { output = false })
+--vim.api.nvim_cmd({ cmd = "colorscheme", args = { "duskfox" } }, { output = false })
+vim.g.neon_style = "dark"
+vim.api.nvim_cmd({ cmd = "colorscheme", args = { "neon" } }, { output = false });

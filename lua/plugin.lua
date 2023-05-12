@@ -16,5 +16,6 @@ require("lazy").setup({
 		{ import = "plugins" },
 		{ import = "plugins.lsp.lspconfig" },
 		{ import = "plugins.colorschemes" },
+		{ import = "plugins.fun" },
 	},
 })
